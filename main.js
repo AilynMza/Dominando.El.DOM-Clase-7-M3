@@ -1,5 +1,5 @@
 const rangeContainer = document.querySelector('.range-container');
-const inputRange = rangeContainer.children[0];
+const inputRange = document.querySelector('.range-container input')
 const generateBtn = document.querySelector('.generator form button');
 
 
