@@ -1,66 +1,76 @@
-const rangeContainer = document.querySelector('.range-container');
-const inputRange = document.querySelector('.range-container input')
-const generateBtn = document.querySelector('.generator form button');
-    //      from  -  to
-    // Mayus 0 a     25
-    // Minus 26 a    51
-    // Numero 52 a   61
-    // Simbolos 62 a 67
-const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&*';
+const rangeContainer = document.querySelector(".range-container");
+const inputRange = document.querySelector(".range-container input");
+const generateBtn = document.querySelector(".generator form button");
+
+//      from  -  to
+// Mayus 0 a     25
+// Minus 26 a    51
+// Numero 52 a   61
+// Simbolos 62 a 67
+const characters =
+  "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&*";
 
 const handleChange = () => {
-    const inputValue = inputRange.value;
-    const lengthCounter = document.querySelector('.range-container h1');
-    lengthCounter.textContent = inputValue;
-}
+  const inputValue = inputRange.value;
+  const lengthCounter = document.querySelector(".range-container h1");
+  lengthCounter.textContent = inputValue;
+};
 
 const generatePassword = (passwordLength) => {
-    let result = '';    
-    for(let i = 0; i < passwordLength; i++){
-        result += characters.charAt(Math.floor(Math.random() * characters.length));
+  const isMayus = true;
+  const isMinus = true;
+  const isNumber = true;
+  const isSymbol = true;
+  let finalPassword = "";
+
+  while (finalPassword.length < passwordLength) {
+    console.log(finalPassword);
+    if (isMayus && finalPassword.length < passwordLength) {
+      finalPassword += getRandomCharacterBetween(0, 25);
     }
-    return result
+    if (isMinus && finalPassword.length < passwordLength) {
+      finalPassword += getRandomCharacterBetween(26, 51);
+    }
+    if (isNumber && finalPassword.length < passwordLength) {
+      finalPassword += getRandomCharacterBetween(52, 61);
+    }
+    if (isSymbol && finalPassword.length < passwordLength) {
+      finalPassword += getRandomCharacterBetween(62, 67);
+    }
+  }
+
+  finalPassword = shuffleString(finalPassword);
+  return finalPassword;
+};
+
+// Función para mezclar la cadena
+function shuffleString(str) {
+  let arr = str.split(""); 
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1)); 
+    [arr[i], arr[j]] = [arr[j], arr[i]]; // Deconstruir para intercambia los elementos
+  }
+  return arr.join("");
 }
 
 // Función para obtener un número random entre dos rangos de valores
-const getRandomBetween = (from, to) => {
-    return from+(Math.floor(Math.random()*(to-from+1)));
-}
-
-// Obtener Mayus Aleatoria
-const getRandomMayus = () => {
-    const randomMayusIndex = getRandomBetween(0,25);
-    let characterMayus = characters.slice(randomMayusIndex, randomMayusIndex+1);
-    return characterMayus
-}
-// Obtener Minuscula Aleatoria
-const getRandomMinus = () => {
-    const randomMayusIndex = getRandomBetween(26,51);
-    let characterMayus = characters.slice(randomMinusIndex, randomMayusIndex+1);
-    return characterMinus
-}
-// Obtener Números Aleatorios
-const getRandomNumber = () => {
-    const randomMayusIndex = getRandomBetween(52,61);
-    let characterMayus = characters.slice(randomNumberIndex, randomMayusIndex+1);
-    return characterNumber
-}
-// Obtener Simbolos Aleatorios
-const getRandomSimbol = () => {
-    const randomMayusIndex = getRandomBetween(62,67);
-    let characterMayus = characters.slice(randomSimbolIndex, randomMayusIndex+1);
-    return characterSimbol
-}
-
+const getRandomCharacterBetween = (from, to) => {
+  const randomCharacterIndex =
+    from + Math.floor(Math.random() * (to - from + 1));
+  return characters.charAt(randomCharacterIndex);
+};
 
 const printPassword = (event) => {
-    event.preventDefault();
-    const inputValue = inputRange.value;
-    const password = generatePassword(inputValue);
-    const passwordHeading = document.querySelector('.password-container h1');
-    passwordHeading.textContent = password;
-}
+  event.preventDefault();
+  const inputValue = inputRange.value;
+  const password = generatePassword(inputValue);
+  console.log(password);
+  const passwordHeading = document.querySelector(".password-container h1");
+  passwordHeading.textContent = password;
+};
 
-inputRange.addEventListener('change', () => handleChange());
-generateBtn.addEventListener('click', (event) => printPassword(event));
+inputRange.addEventListener("change", () => handleChange());
+generateBtn.addEventListener("click", (event) => printPassword(event));
 
+
+//Función para checbox
