@@ -2,6 +2,8 @@ const rangeContainer = document.querySelector(".range-container");
 const inputRange = document.querySelector(".range-container input");
 const generateBtn = document.querySelector(".generator form button");
 
+const mayusCheckbox = document.querySelector()
+
 //      from  -  to
 // Mayus 0 a     25
 // Minus 26 a    51
