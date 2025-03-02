@@ -19,22 +19,33 @@
                 <h1>5</h1>
             </div>
             <div class="checkbox-container">
-                <input type="checkbox" id="input-checkbox-uppercase-letters">
-                <label for="input-checkbox-uppercase-letters">Incluye Letras Mayúsculas</label>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="input-checkbox-uppercase-letters">
+                    <label for="input-checkbox-uppercase-letters">Incluye Letras Mayúsculas</label>
+                </div>
                 
-                <input type="checkbox" id="input-checkbox-lowercase-letters">
-                <label for="input-checkbox-uppercase-letters">Incluye Letras Minúsculas</label>   
-                
-                <input type="checkbox" id="input-checkbox-numbers">
-                <label for="input-checkbox-uppercase-letters">Incluye Números</label>
-
-                <input type="checkbox" id="input-checkbox-symbols">
-                <label for="input-checkbox-uppercase-letters">Incluye Símbolos</label>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="input-checkbox-lowercase-letters">
+                    <label for="input-checkbox-lowercase-letters">Incluye Letras Minúsculas</label>
+                </div>
+            
+                <div class="checkbox-item">
+                    <input type="checkbox" id="input-checkbox-numbers">
+                    <label for="input-checkbox-numbers">Incluye Números</label>
+                </div>
+            
+                <div class="checkbox-item">
+                    <input type="checkbox" id="input-checkbox-symbols">
+                    <label for="input-checkbox-symbols">Incluye Símbolos</label>
+                </div>
             </div>
             <div class="password-strenght-container">
                 <p>Nivel de seguridad</p>
-                <p>Baja</p>
-                <p>█</p>
+                <div class="level-security">
+                    <p>Baja</p>
+                    <p>█</p>
+                </div>
+
             </div>
             <button>Generar</button>
         </form>
