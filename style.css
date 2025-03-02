@@ -85,12 +85,15 @@ body {
 
 .password-strenght-container{
     font-weight: bold;
+    display: flex;
+    white-space: nowrap;
 }
 
 .level-security{
     font-family: "Jua", sans-serif;
     display: flex;
     gap: 0.8rem;
+    color: rgb(49, 34, 107);
 }
 
 button{

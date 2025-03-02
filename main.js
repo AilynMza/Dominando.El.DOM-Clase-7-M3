@@ -2,7 +2,20 @@ const rangeContainer = document.querySelector(".range-container");
 const inputRange = document.querySelector(".range-container input");
 const generateBtn = document.querySelector(".generator form button");
 
-const mayusCheckbox = document.querySelector()
+const mayusCheckbox = document.querySelector("#mayusCheckbox")
+const minusCheckbox = document.querySelector("#minusCheckbox")
+const numberCheckbox = document.querySelector("#numberCheckbox")
+const symbolCheckbox = document.querySelector("#symbolCheckbox")
+
+const securityLabel = document.querySelector('.level-security p');
+
+const security = [
+    {label: "N/A", color:'rgb(224, 65, 65)' },
+    {label: "Inseguro █", color:'rgb(96, 60, 238)' },
+    {label: "Poco Seguro █ █", color:'rgb(88, 104, 246)' },
+    {label: "Seguro █ █ █", color:'rgb(157, 153, 237)' },
+    {label: "Muy Seguro █ █ █ █", color:'rgb(125, 146, 210)' }
+]
 
 //      from  -  to
 // Mayus 0 a     25
@@ -19,14 +32,18 @@ const handleChange = () => {
 };
 
 const generatePassword = (passwordLength) => {
-  const isMayus = true;
-  const isMinus = true;
-  const isNumber = true;
-  const isSymbol = true;
-  let finalPassword = "";
+  const isMayus = mayusCheckbox.checked;
+  const isMinus = minusCheckbox.checked;
+  const isNumber = numberCheckbox.checked;
+  const isSymbol = symbolCheckbox.checked;
+  
+  if(!isMayus && !isMinus && !isNumber && !isSymbol){
+    alert('Selecciona al menos una opción');
+    return 'GirliePass';
+  }
 
+  let finalPassword = "";
   while (finalPassword.length < passwordLength) {
-    console.log(finalPassword);
     if (isMayus && finalPassword.length < passwordLength) {
       finalPassword += getRandomCharacterBetween(0, 25);
     }
@@ -62,17 +79,34 @@ const getRandomCharacterBetween = (from, to) => {
   return characters.charAt(randomCharacterIndex);
 };
 
+//Función para nivel de seguridad de contraseña
+const strengthPassword = () => {
+    const isMayus = mayusCheckbox.checked;
+    const isMinus = minusCheckbox.checked;
+    const isNumber = numberCheckbox.checked;
+    const isSymbol = symbolCheckbox.checked;
+
+    let counter = 0;
+    if(isMayus) counter++;
+    if(isMinus) counter++;
+    if(isNumber) counter++;
+    if(isSymbol) counter++;
+
+    return security[counter];
+}
+
 const printPassword = (event) => {
   event.preventDefault();
   const inputValue = inputRange.value;
   const password = generatePassword(inputValue);
-  console.log(password);
   const passwordHeading = document.querySelector(".password-container h1");
   passwordHeading.textContent = password;
+
+  const securityLevel = strengthPassword();
+  securityLabel.textContent = securityLevel.label;
+  securityLabel.style.color = securityLevel.color;
 };
 
 inputRange.addEventListener("change", () => handleChange());
 generateBtn.addEventListener("click", (event) => printPassword(event));
 
-
-//Función para checbox
