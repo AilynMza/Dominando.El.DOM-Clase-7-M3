@@ -16,3 +16,10 @@
     display: flex;
     gap: 1rem;
 }
+
+
+.checkbox-container{
+    display: flex;
+    flex-direction: column;
+}
+
