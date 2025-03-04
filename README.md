@@ -13,6 +13,6 @@ Este proyecto es un generador de contraseñas diseñado para ofrecer seguridad y
 [GitHub Pages - Dominando el DOM en JavaScript Clase 7](https://ailynmza.github.io/Dominando.El.DOM-Clase-7-M3/)
 
 ## Conclusión
-Trabajar en este generador de contraseñas me permitió explorar distintas formas de mejorar la experiencia del usuario y reforzar la seguridad en la generación de claves. Implementar la mezcla de caracteres y optimizar la lógica del formulario fueron retos interesantes que hicieron el proyecto dinámico con el uso de javascript. En el futuro, se podrían añadir opciones como copiar la contraseña con un solo clic. 🔑
+Trabajar en este generador de contraseñas me permitió explorar distintas formas de mejorar la experiencia del usuario y reforzar la seguridad en la generación de claves. Implementar la mezcla de caracteres y optimizar la lógica del formulario fueron retos interesantes que hicieron el proyecto dinámico con el uso de javascript. Me permitió practicar y retroalimentar lo aprendido de DOM. 🔑
 
 ![Meme](/imgs/DOM_meme.jpg)
